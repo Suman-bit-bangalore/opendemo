@@ -1,0 +1,4 @@
+type: GCS
+config:
+  bucket: "thanos_prom"
+  service_account: "/etc/thanos/service-account-key.json"

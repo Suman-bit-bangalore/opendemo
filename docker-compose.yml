@@ -798,10 +798,10 @@ services:
     command:
       - sidecar
       - --tsdb.path=/prometheus
-      - --objstore.config=/etc/thanos/gcs-config.yaml
+      - --objstore.config.file=/etc/thanos/gcs-config.yaml
     volumes:
       - ./src/prometheus:/prometheus
-      - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml
+      - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml:ro
     depends_on:
       - prometheus
     restart: unless-stopped
@@ -813,10 +813,10 @@ services:
     container_name: thanos-store
     command:
       - store
-      - --objstore.config=/etc/thanos/gcs-config.yaml
+      - --objstore.config.file=/etc/thanos/gcs-config.yaml
     volumes:
-      - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml
-      - ./src/thanos/service-account-key.json:/etc/thanos/service-account-key.json
+      - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml:ro
+      - ./src/thanos/service-account-key.json:/etc/thanos/service-account-key.json:ro
     restart: unless-stopped
     logging: *logging
 

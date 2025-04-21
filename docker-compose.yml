@@ -829,11 +829,11 @@ services:
     container_name: thanos-query
     command:
       - query
-      - --http-address=0.0.0.0:9090
+      - --http-address=0.0.0.0:9091
       - --store=thanos-sidecar:10901
       - --store=thanos-store:10901
     ports:
-      - "9090:9090"
+      - "9091:9091"
     depends_on:
       - thanos-sidecar
       - thanos-store

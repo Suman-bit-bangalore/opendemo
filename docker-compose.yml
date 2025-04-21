@@ -798,7 +798,7 @@ services:
     command:
       - sidecar
       - --tsdb.path=/prometheus
-      - --objstore.config.file=/etc/thanos/gcs-config.yaml
+      - "--objstore.config=type: GCS\nconfig:\n  bucket: \"thanos_prom\"\n  service_account_file: \"/etc/thanos/service-account-key.json\""
     volumes:
       - ./src/prometheus:/prometheus
       - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml:ro
@@ -813,7 +813,7 @@ services:
     container_name: thanos-store
     command:
       - store
-      - --objstore.config.file=/etc/thanos/gcs-config.yaml
+      - "--objstore.config=type: GCS\nconfig:\n  bucket: \"thanos_prom\"\n  service_account_file: \"/etc/thanos/service-account-key.json\""
     volumes:
       - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml:ro
       - ./src/thanos/service-account-key.json:/etc/thanos/service-account-key.json:ro

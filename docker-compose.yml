@@ -816,6 +816,7 @@ services:
       - --objstore.config=/etc/thanos/gcs-config.yaml
     volumes:
       - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml
+      - ./src/thanos/service-account-key.json:/etc/thanos/service-account-key.json
     restart: unless-stopped
     logging: *logging
 

@@ -799,6 +799,7 @@ services:
       - sidecar
       - --tsdb.path=/prometheus
       - "--objstore.config=type: GCS\nconfig:\n  bucket: \"thanos_prom\"\n  service_account_file: \"/etc/thanos/service-account-key.json\""
+      - "--prometheus.url=http://prometheus:9090"
     volumes:
       - ./src/prometheus:/prometheus
       - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml:ro

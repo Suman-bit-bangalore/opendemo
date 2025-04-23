@@ -804,7 +804,7 @@ services:
       - "--objstore.config=type: GCS\nconfig:\n  bucket: \"thanos_prom\"\n  service_account_file: \"/etc/thanos/service-account-key.json\""
       - "--prometheus.url=http://prometheus:9090"
     volumes:
-      - ./src/prometheus:/prometheus
+      - /prometheus_data:/prometheus
       - ./src/thanos/gcs-config.yaml:/etc/thanos/gcs-config.yaml:ro
     depends_on:
       - prometheus

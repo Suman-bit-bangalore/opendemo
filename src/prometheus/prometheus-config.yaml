@@ -5,12 +5,14 @@ global:
   scrape_interval: 5s
   scrape_timeout: 3s
   evaluation_interval: 30s
-# Add external labels here
-external_labels:
-  cluster: "instance-20250412-131700"  # Replace with an appropriate label, e.g., cluster name or environment
-  region: "us-central1-c"          # Optional: Add additional labels as needed for identification
-  environment: "dev"     # Optional: If you want to label based on environment (prod/stage/dev)
 
+# Define external labels here
+external_labels:
+  cluster: "instance-20250412-131700"
+  region: "us-central1-c"
+  environment: "dev"
+
+# OpenTelemetry settings (if applicable)
 otlp:
   promote_resource_attributes:
     - service.instance.id
@@ -21,6 +23,7 @@ otlp:
     - container.name
     - deployment.environment.name
 
+# Storage configuration
 storage:
   tsdb:
     out_of_order_time_window: 30m
